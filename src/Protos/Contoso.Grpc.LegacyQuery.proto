@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package Contoso.Grpc;
+
+import "Contoso.Grpc.LegacyQueryRequest.proto";
+import "Contoso.Grpc.LegacyQueryResponse.proto";
+
+// [csharp_declaration]
+option csharp_namespace = "Contoso.Grpc";
+
+// The service definition.
+service LegacyQuery {
+  // Corresponding to executing LegacyQueryHandler
+  rpc LegacyQuery (LegacyQueryRequest) returns (stream LegacyQueryResponse) {}
+}

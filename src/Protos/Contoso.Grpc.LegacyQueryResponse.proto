@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package Contoso.Grpc;
+
+// [csharp_declaration]
+option csharp_namespace = "Contoso.Grpc";
+
+message LegacyQueryResponse {
+    bytes LegacyAqr = 1;
+}

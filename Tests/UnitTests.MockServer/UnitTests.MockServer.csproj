@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" />
+  <PropertyGroup>
+    <AssemblyName>Grpc.UnitTests.MockServer</AssemblyName>
+    <RootNamespace>Grpc.UnitTests.MockServer</RootNamespace>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x64</Platform>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <ProjectGuid>{27e1748c-baec-43ff-a53e-d1d9aa097a7f}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <AssemblyClsCompliant>false</AssemblyClsCompliant>
+    <CopyMiscToOutput>False</CopyMiscToOutput>
+    <AutoGenerateBindingRedirects>True</AutoGenerateBindingRedirects>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildType Condition="'$(BuildType)'==''">debug</BuildType>
+    <BuildArchitecture Condition="'$(BuildArchitecture)'==''">amd64</BuildArchitecture>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildType Condition="'$(BuildType)'==''">retail</BuildType>
+    <BuildArchitecture Condition="'$(BuildArchitecture)'==''">amd64</BuildArchitecture>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Protos\Protos.csproj">
+      <Project>{04821832-FCB2-45AA-A598-7C654E05C005}</Project>
+      <Name>Protos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\GrpcServer\GrpcServer.csproj" >
+      <Project>{E8717BD4-D7C8-4263-9405-1959838F499C}</Project>
+      <Name>GrpcServer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MockRetryableLegacyQueryHandler.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Grpc" Version="[2.31.0-pre2]"/>
+    <PackageReference Include="Grpc.Core.Api" Version="[2.31.0-pre2]"/>
+    <PackageReference Include="Grpc.Core.NativeDebug" Version="[2.31.0-pre2]"/>
+  </ItemGroup>
+  <PropertyGroup>
+    <PreBuildEvent />
+  </PropertyGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
