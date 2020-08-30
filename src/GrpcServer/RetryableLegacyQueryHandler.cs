@@ -1,15 +1,14 @@
-namespace Contoso.Grpc.UnitTests.MockServer
+namespace Contoso.Grpc
 {
     using System.Threading.Tasks;
     using System;
     using global::Grpc.Core;
-    using Contoso.Grpc;
 
     /// <summary>
     /// Mock Legacy query handler to test retry scenario.
     /// It will fail on the first or second attemps, and succeed on the 3rd attempt.
     /// </summary>
-    public class MockRetryableLegacyQueryHandler : GrpcServerLegacyQueryHandlerBase
+    public class RetryableLegacyQueryHandler : GrpcServerLegacyQueryHandlerBase
     {
         private const string HeaderMachineName = "X-MachineName";
         private const string HeaderMachineIP = "X-MachineIP";
@@ -30,14 +29,7 @@ namespace Contoso.Grpc.UnitTests.MockServer
             }
             else
             {
-                //var failureResponseTrailure = new Metadata();
-                //this.SetResponseHeader(failureResponseTrailure);
-                //throw new RpcException(new Status(StatusCode.Internal, "Failing the request to test retry."), failureResponseTrailure, "failed for retry");
                 throw new RpcException(new Status(StatusCode.Unavailable, "Failing the request to test retry."), "failed for retry");
-
-                //context.Status = new Status(StatusCode.Internal, "Failing the request to test retry.");
-                //byte[] bytes = new byte[] { 111, 122 };
-                //return handlerStreamWriter.WriteAsync(new ArraySegment<byte>(bytes));
             }
         }
 

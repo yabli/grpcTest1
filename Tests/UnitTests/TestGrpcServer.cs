@@ -5,13 +5,12 @@ namespace Contoso.Grpc.UnitTests
     using Google.Protobuf;
     using NUnit.Framework;
     using System;
-    using System.Diagnostics;
     using System.Threading.Tasks;
 
     [TestFixture]
     public class TestGrpcServer
     {
-        private static Process MockGrpcServerProcess = null;
+        private static GrpcServer GrpcServer = null;
         private static int Port = UnitTestsHelper.FindOpenPort();
         private const string LocalHost = "127.0.0.1";
 
@@ -24,7 +23,7 @@ namespace Contoso.Grpc.UnitTests
             System.Environment.SetEnvironmentVariable("GRPC_VERBOSITY", "DEBUG");
             System.Environment.SetEnvironmentVariable("GRPC_TRACE", "all");
 
-            MockGrpcServerProcess = UnitTestsHelper.StartsMockGrpcServer(Port, true);
+            GrpcServer = UnitTestsHelper.StartGrpcServer(Port, true);
         }
 
         [Test]
@@ -77,9 +76,9 @@ namespace Contoso.Grpc.UnitTests
         [OneTimeTearDown]
         public static void TestFixtureTearDown()
         {
-            if (UnitTestsHelper.IsProcessRunning(MockGrpcServerProcess))
+            if (GrpcServer != null)
             {
-                UnitTestsHelper.StopsProcess(MockGrpcServerProcess, 10000);
+                UnitTestsHelper.StopGrpcServer(GrpcServer);
             }
         }
 
