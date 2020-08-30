@@ -6,3 +6,8 @@ Projects:
 - Tests/UnitTests: You can run this exe to repro the reported issue.
 
 The test crashes after client received the first failure response (on the first attempt of request).
+
+Steps to repro:
+- dotnet restore GrpcRepro.sln
+- dotnet build GrpcRepro.sln
+- Tests\UnitTests\bin\Debug\net472\UnitTests.exe
