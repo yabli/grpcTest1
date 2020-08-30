@@ -9,7 +9,7 @@ namespace Contoso.Grpc.UnitTests.MockServer
     /// Mock Legacy query handler to test retry scenario.
     /// It will fail on the first or second attemps, and succeed on the 3rd attempt.
     /// </summary>
-    internal class MockRetryableLegacyQueryHandler : GrpcServerLegacyQueryHandlerBase
+    public class MockRetryableLegacyQueryHandler : GrpcServerLegacyQueryHandlerBase
     {
         private const string HeaderMachineName = "X-MachineName";
         private const string HeaderMachineIP = "X-MachineIP";

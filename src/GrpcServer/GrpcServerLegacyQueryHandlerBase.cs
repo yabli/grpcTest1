@@ -8,7 +8,7 @@
     /// Abstract class for LegecyQuery gRpc request handling. Implementation of this class can be used to 
     /// serve LegacyQuery gRpc request
     /// </summary>
-    internal abstract class GrpcServerLegacyQueryHandlerBase
+    public abstract class GrpcServerLegacyQueryHandlerBase
     {
         /// <summary>
         /// Abstract method for LegecyQuery gRpc request handling.

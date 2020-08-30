@@ -7,7 +7,7 @@ namespace Contoso.Grpc
     /// gRpc retry policy configuration data
     /// ref - https://github.com/grpc/proposal/blob/master/A6-client-retries.md#retry-policy-capabilities
     /// </summary>
-    internal class RetryPolicy
+    public class RetryPolicy
     {
         /// <summary>
         /// specifies the maximum number of RPC attempts, including the original request.
@@ -52,7 +52,7 @@ namespace Contoso.Grpc
         internal static readonly string[] RetryableStatusCodes = { $"\"{StatusCode.Unavailable.ToString().ToUpperInvariant()}\""};
         private static readonly string StatusCodesString = string.Join(",", RetryableStatusCodes);
         
-        internal RetryPolicy(int maxAttempts, float initialBackoff, float maxBackoff, float backoffMultiplier)
+        public RetryPolicy(int maxAttempts, float initialBackoff, float maxBackoff, float backoffMultiplier)
         {
             if (!(maxAttempts > 1 && maxAttempts <= 5))
             {

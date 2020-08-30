@@ -4,7 +4,7 @@ namespace Contoso.Grpc
     using System.Collections.Generic;
     using global::Grpc.Core;
 
-    internal class GrpcServer
+    public class GrpcServer
     {
         private const string GRPC_ARG_SERVICE_CONFIG = "grpc.service_config";
 

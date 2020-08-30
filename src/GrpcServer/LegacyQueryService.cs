@@ -5,7 +5,7 @@ namespace Contoso.Grpc
     using System.Threading.Tasks;
     using global::Grpc.Core;
 
-    internal class LegacyQueryService : LegacyQuery.LegacyQueryBase, IGrpcService
+    public class LegacyQueryService : LegacyQuery.LegacyQueryBase, IGrpcService
     {
         public const string RequestSizeKey = "requestSize";
 

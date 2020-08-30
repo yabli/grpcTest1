@@ -13,9 +13,10 @@ namespace Contoso.Grpc.UnitTests
         private static StreamReader StandardErrorStream;
         private static StreamReader StandardOutputStream;
 
-        private static Assembly MockGrpcServerAssembly = typeof(MockServer.MockRetryableLegacyQueryHandler).Assembly;
-        private static string MockGrpcServerPath = MockGrpcServerAssembly.Location;
-        private static string MockGrpcServerDirectory = Path.GetDirectoryName(MockGrpcServerPath);
+        private static Assembly UnitTestsAssembly = typeof(UnitTestsHelper).Assembly;
+        private static string UnitTestsAssemblyPath = UnitTestsAssembly.Location;
+        private static string MockGrpcServerDirectory = Path.GetDirectoryName(UnitTestsAssemblyPath);
+        private static string MockGrpcServerPath = Path.Combine(MockGrpcServerDirectory, "UnitTests.MockServer.exe");
         private static string TimeStampTag = DateTime.UtcNow.ToString("yyyyMMddHHmm");
         private static string StandardErrorFileName = Path.Combine(MockGrpcServerDirectory, "MockGrpc_StdOut_" + TimeStampTag + ".log");
         private static string StandardOutputFileName = Path.Combine(MockGrpcServerDirectory, "MockGrpc_StdErr_" + TimeStampTag + ".log");
